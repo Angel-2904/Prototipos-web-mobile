@@ -3,289 +3,450 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>AglomeDaroa — Aglomerados y Soluciones</title>
+    <title>GanaCoNaval — Prototipo Dashboard</title>
     <meta
       name="description"
-      content="AglomeDaroa — Soluciones integrales en aglomerados y materiales para obras. Calidad, innovación y servicio."
+      content="Prototipo de dashboard: Solicitudes, Autorizaciones, Repositorio, Histórico, Monitoreo y Reportes."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="container">
-      <header>
-        <a class="brand" href="#">
-          <div class="logo">AD</div>
-          <div>
-            <h1>AglomeDaroa</h1>
-            <span>Soluciones en aglomerados y materiales</span>
-          </div>
-        </a>
-
-        <nav aria-label="Navegación principal">
-          <a href="#servicios">Servicios</a>
-          <a href="#portafolio">Portafolio</a>
-          <a href="#nosotros">Nosotros</a>
-          <a href="#contacto" class="cta">Habla con nosotros</a>
-        </nav>
-      </header>
-
-      <!-- HERO -->
-      <div class="hero">
-        <div class="hero-card appear" id="hero-left">
-          <span class="kicker">Productos industriales • Proyectos</span>
-          <h2>Materiales aglomerados de calidad para obras y fabricación</h2>
-          <p class="lead">
-            Fabricamos soluciones a medida para pavimentos, construcción y
-            aplicaciones industriales. Innovación, durabilidad y atención
-            técnica desde el primer contacto.
-          </p>
-
-          <div class="features">
-            <div class="feat">
-              <div class="icon">Q</div>
-              <div>
-                <div style="font-weight: 800">Alta resistencia</div>
-                <div class="muted">Pruebas y control de calidad</div>
-              </div>
-            </div>
-
-            <div class="feat">
-              <div class="icon">⚙</div>
-              <div>
-                <div style="font-weight: 800">Soluciones a medida</div>
-                <div class="muted">Asesoría técnica y diseño</div>
-              </div>
-            </div>
-
-            <div class="feat">
-              <div class="icon">🚚</div>
-              <div>
-                <div style="font-weight: 800">Logística segura</div>
-                <div class="muted">Entrega puntual a obra</div>
-              </div>
-            </div>
-          </div>
-
-          <div style="margin-top: 18px; display: flex; gap: 12px">
-            <a class="cta" href="#contacto">Solicitar presupuesto</a>
-            <a class="btn-sec" href="#portafolio">Ver proyectos</a>
-          </div>
-
-          <div
-            style="margin-top: 18px; color: var(--muted); font-size: 0.95rem"
-          >
-            <strong>Proyectos recientes:</strong> Pavimentos comerciales, placas
-            industriales, revestimientos de alta carga.
-          </div>
+    <!-- SIDEBAR -->
+    <aside class="sidebar" role="navigation" aria-label="Barra lateral">
+      <div class="brand">
+        <div class="logo">GN</div>
+        <div>
+          <div class="brand-title">GanaCoNaval</div>
+          <div class="brand-sub">Operaciones y autorizaciones</div>
         </div>
-
-        <aside class="hero-side appear" id="hero-right">
-          <div
-            style="
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-            "
-          >
-            <div>
-              <div class="muted">Empresa</div>
-              <div style="font-weight: 800; font-size: 1.1rem">
-                AglomeDaroa S.A.S
-              </div>
-            </div>
-            <div style="text-align: right">
-              <div class="muted">Años</div>
-              <div style="font-weight: 800; font-size: 1.1rem">+12</div>
-            </div>
-          </div>
-
-          <div class="stats" style="margin-top: 16px">
-            <div class="stat">
-              <div class="muted">m² producidos</div>
-              <b>1.200.000</b>
-            </div>
-            <div class="stat">
-              <div class="muted">Clientes</div>
-              <b>320</b>
-            </div>
-            <div class="stat">
-              <div class="muted">Satisfacción</div>
-              <b>98%</b>
-            </div>
-          </div>
-
-          <div style="margin-top: 18px">
-            <div class="muted">Contacto técnico</div>
-            <div style="margin-top: 8px; font-weight: 800">
-              ingenieria@aglomedaroa.com
-            </div>
-          </div>
-        </aside>
       </div>
 
-      <!-- Servicios -->
-      <section id="servicios" class="appear">
-        <h2>Nuestros servicios</h2>
-        <div class="grid-3">
-          <div class="card">
-            <h3>Fabricación de aglomerados</h3>
-            <p class="muted">
-              Producción bajo especificaciones del cliente: densidad, rugosidad,
-              resistencia y granulometría controlada.
-            </p>
-          </div>
+      <nav class="menu" role="menu">
+        <button class="menu-item active" data-view="dashboard">
+          Dashboard
+        </button>
+        <button class="menu-item" data-view="solicitudes">Solicitudes</button>
+        <button class="menu-item" data-view="autorizaciones">
+          Autorizaciones
+        </button>
+        <button class="menu-item" data-view="repositorio">Repositorio</button>
+        <button class="menu-item" data-view="historico">Histórico</button>
+        <button class="menu-item" data-view="monitoreo">Monitoreo</button>
+        <button class="menu-item" data-view="reportes">Reportes</button>
+        <button class="menu-item" data-view="admin">Administración</button>
+      </nav>
 
-          <div class="card">
-            <h3>Consultoría técnica</h3>
-            <p class="muted">
-              Asesoría especializada para seleccionar materiales y procesos
-              adecuados a la aplicación final.
-            </p>
-          </div>
+      <div class="sidebar-footer">
+        <small>Equipo SISO — Administrador</small>
+        <div class="muted">© <span id="year"></span></div>
+      </div>
+    </aside>
 
-          <div class="card">
-            <h3>Instalación y logística</h3>
-            <p class="muted">
-              Coordinamos entrega, manejo en obra y supervisión para garantizar
-              tiempos y calidad.
-            </p>
+    <!-- MAIN CONTENT -->
+    <main class="content" role="main">
+      <!-- DASHBOARD -->
+      <section class="view" data-view="dashboard">
+        <header class="view-header">
+          <h1>Dashboard</h1>
+          <div class="view-actions">
+            <button id="openNewRequest" class="primary">Crear solicitud</button>
+          </div>
+        </header>
+
+        <div class="cards">
+          <div class="card stat">
+            <div class="muted">Solicitudes activas</div>
+            <div class="big" id="statActive">0</div>
+          </div>
+          <div class="card stat">
+            <div class="muted">Pendientes por autorización</div>
+            <div class="big" id="statPending">0</div>
+          </div>
+          <div class="card stat">
+            <div class="muted">Archivos en repositorio</div>
+            <div class="big" id="statFiles">0</div>
           </div>
         </div>
-      </section>
 
-      <!-- Portafolio -->
-      <section id="portafolio" class="appear">
-        <h2>Portafolio</h2>
-        <div class="controls" role="tablist" aria-label="Filtrar proyectos">
-          <button class="btn-filter active" data-filter="all">Todos</button>
-          <button class="btn-filter" data-filter="pavimento">Pavimentos</button>
-          <button class="btn-filter" data-filter="industrial">
-            Industrial
-          </button>
-          <button class="btn-filter" data-filter="comercial">Comercial</button>
+        <div class="panel">
+          <h2>Resumen rápido</h2>
+          <p class="muted">
+            Vista general de las solicitudes y autorizaciones. Usa las secciones
+            laterales para administrar y revisar elementos uno por uno.
+          </p>
         </div>
 
-        <div class="portfolio-grid" id="portfolio">
-          <div class="project" data-cat="pavimento">
-            <span class="tag">Pavimento</span>
-            <div style="font-weight: 800">
-              Supermercado Central — Acabado duradero
-            </div>
-          </div>
-          <div class="project" data-cat="industrial">
-            <span class="tag">Industrial</span>
-            <div style="font-weight: 800">
-              Planta logística — Placas de alta carga
-            </div>
-          </div>
-          <div class="project" data-cat="comercial">
-            <span class="tag">Comercial</span>
-            <div style="font-weight: 800">
-              Centro comercial — Revestimiento estético
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Nosotros -->
-      <section id="nosotros" class="appear">
-        <h2>Sobre nosotros</h2>
-        <div class="nosotros-content">
-          <div>
-            <p class="muted">
-              AglomeDaroa es una empresa dedicada a la producción y desarrollo
-              de aglomerados para usos industriales y civiles.
-            </p>
-            <ul>
-              <li>Control de calidad certificado</li>
-              <li>Laboratorio interno de ensayos</li>
-              <li>Equipos técnicos y logísticos propios</li>
-            </ul>
-          </div>
-          <div class="compromiso">
-            <div>
-              <div style="font-size: 0.9rem">Compromiso ambiental</div>
-              <div style="font-size: 1.3rem; margin-top: 8px">
-                Procesos con menor huella
-              </div>
-              <div
-                style="
-                  font-size: 0.85rem;
-                  margin-top: 6px;
-                  color: #06363a;
-                  font-weight: 600;
-                "
-              >
-                Reciclamos materiales y optimizamos consumo energético.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contacto -->
-      <section id="contacto" class="appear">
-        <h2>Contacto</h2>
-        <div class="contact">
-          <form id="contactForm" aria-label="Formulario de contacto">
-            <label for="name">Nombre</label>
+        <!-- Comentarios -->
+        <div class="panel">
+          <h3>Comentarios sobre Dashboard</h3>
+          <form
+            class="comment-form"
+            data-screen="Dashboard"
+            id="comment-dashboard"
+          >
+            <input type="hidden" name="screen" value="Dashboard" />
             <input
               type="text"
-              id="name"
               name="name"
-              placeholder="Tu nombre completo"
+              placeholder="Tu nombre (tester)"
               required
             />
-
-            <label for="email">Correo</label>
             <input
               type="email"
-              id="email"
               name="email"
               placeholder="tu@correo.com"
               required
             />
-
-            <label for="message">Mensaje</label>
             <textarea
-              id="message"
               name="message"
-              rows="5"
-              placeholder="Cuéntanos sobre tu proyecto..."
+              placeholder="Tu comentario sobre esta pantalla..."
+              rows="3"
               required
             ></textarea>
-
-            <button type="submit">Enviar mensaje</button>
-            <div id="formMsg" class="muted" style="margin-top: 10px"></div>
+            <div style="display: flex; gap: 8px; align-items: center">
+              <button class="secondary" type="submit">Enviar comentario</button>
+              <small class="muted"
+                >Los comentarios se guardan localmente o se pueden enviar a
+                Formspree.</small
+              >
+            </div>
           </form>
-
-          <aside>
-            <h3>Visítanos / Llámanos</h3>
-            <div class="muted">Dirección</div>
-            <div style="font-weight: 800; margin-bottom: 8px">
-              Carrera 45 # 12-34, Ciudad
-            </div>
-            <div class="muted">Teléfono</div>
-            <div style="font-weight: 800; margin-bottom: 8px">
-              +57 300 000 0000
-            </div>
-            <div class="muted">Horario</div>
-            <div style="font-weight: 800">Lun - Vie 7:30 - 17:30</div>
-          </aside>
         </div>
       </section>
 
-      <footer>
-        <div>
-          <div style="font-weight: 800">AglomeDaroa S.A.S</div>
-          <div class="muted">
-            © <span id="year"></span> Todos los derechos reservados
+      <!-- SOLICITUDES -->
+      <section class="view hidden" data-view="solicitudes">
+        <header class="view-header">
+          <h1>Solicitudes</h1>
+          <div class="view-actions">
+            <button id="openNewRequest2" class="primary">
+              Nueva solicitud
+            </button>
+          </div>
+        </header>
+
+        <div class="panel">
+          <h3>Lista de solicitudes</h3>
+          <table class="table" id="tableSolicitudes">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Solicitante</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <!-- MODAL: Ver solicitud -->
+        <div
+          id="modalView"
+          class="modal hidden"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div class="modal-content">
+            <h3>Detalle de solicitud</h3>
+            <div id="viewDetails"><!-- datos dinámicos --></div>
+            <div
+              style="
+                display: flex;
+                gap: 8px;
+                justify-content: flex-end;
+                margin-top: 12px;
+              "
+            >
+              <button type="button" id="closeViewModal" class="secondary">
+                Cerrar
+              </button>
+            </div>
           </div>
         </div>
-        <div class="muted">Síguenos: LinkedIn • Twitter • Instagram</div>
-      </footer>
+
+        <!-- Comentarios -->
+        <div class="panel">
+          <h3>Comentarios — Solicitudes</h3>
+          <form
+            class="comment-form"
+            data-screen="Solicitudes"
+            id="comment-solicitudes"
+          >
+            <input type="hidden" name="screen" value="Solicitudes" />
+            <input
+              type="text"
+              name="name"
+              placeholder="Tu nombre (tester)"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="tu@correo.com"
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Tu comentario sobre esta pantalla..."
+              rows="3"
+              required
+            ></textarea>
+            <div style="display: flex; gap: 8px; align-items: center">
+              <button class="secondary" type="submit">Enviar comentario</button>
+              <small class="muted"
+                >Los comentarios se guardan localmente o se pueden enviar a
+                Formspree.</small
+              >
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- AUTORIZACIONES -->
+      <section class="view hidden" data-view="autorizaciones">
+        <header class="view-header"><h1>Autorizaciones</h1></header>
+        <div class="panel">
+          <h3>Solicitudes pendientes</h3>
+          <table class="table" id="tableAutorizaciones">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Solicitante</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <!-- Comentarios -->
+        <div class="panel">
+          <h3>Comentarios — Autorizaciones</h3>
+          <form
+            class="comment-form"
+            data-screen="Autorizaciones"
+            id="comment-autorizaciones"
+          >
+            <input type="hidden" name="screen" value="Autorizaciones" />
+            <input
+              type="text"
+              name="name"
+              placeholder="Tu nombre (tester)"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="tu@correo.com"
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Tu comentario sobre esta pantalla..."
+              rows="3"
+              required
+            ></textarea>
+            <div style="display: flex; gap: 8px; align-items: center">
+              <button class="secondary" type="submit">Enviar comentario</button>
+              <small class="muted"
+                >Los comentarios se guardan localmente o se pueden enviar a
+                Formspree.</small
+              >
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- REPOSITORIO -->
+      <section class="view hidden" data-view="repositorio">
+        <header class="view-header"><h1>Repositorio</h1></header>
+
+        <div class="panel">
+          <h3>Subir archivos</h3>
+          <input id="fileInput" type="file" multiple />
+          <div style="margin-top: 12px" id="fileList"></div>
+        </div>
+
+        <div class="panel">
+          <h3>Comentarios — Repositorio</h3>
+          <form
+            class="comment-form"
+            data-screen="Repositorio"
+            id="comment-repositorio"
+          >
+            <input type="hidden" name="screen" value="Repositorio" />
+            <input
+              type="text"
+              name="name"
+              placeholder="Tu nombre (tester)"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="tu@correo.com"
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Tu comentario sobre esta pantalla..."
+              rows="3"
+              required
+            ></textarea>
+            <div style="display: flex; gap: 8px; align-items: center">
+              <button class="secondary" type="submit">Enviar comentario</button>
+              <small class="muted"
+                >Los comentarios se guardan localmente o se pueden enviar a
+                Formspree.</small
+              >
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- HISTÓRICO -->
+      <section class="view hidden" data-view="historico">
+        <header class="view-header"><h1>Histórico</h1></header>
+
+        <div class="panel">
+          <h3>Registro de solicitudes</h3>
+          <table class="table" id="tableHistorico">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="panel">
+          <h3>Comentarios — Histórico</h3>
+          <form
+            class="comment-form"
+            data-screen="Histórico"
+            id="comment-historico"
+          >
+            <input type="hidden" name="screen" value="Histórico" />
+            <input
+              type="text"
+              name="name"
+              placeholder="Tu nombre (tester)"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="tu@correo.com"
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Tu comentario sobre esta pantalla..."
+              rows="3"
+              required
+            ></textarea>
+            <div style="display: flex; gap: 8px; align-items: center">
+              <button class="secondary" type="submit">Enviar comentario</button>
+              <small class="muted"
+                >Los comentarios se guardan localmente o se pueden enviar a
+                Formspree.</small
+              >
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- MONITOREO -->
+      <section class="view hidden" data-view="monitoreo">
+        <header class="view-header"><h1>Monitoreo</h1></header>
+
+        <div class="panel">
+          <h3>Indicadores</h3>
+          <div class="grid-3">
+            <div class="card">
+              <div class="muted">CPU</div>
+              <div class="big">12%</div>
+            </div>
+            <div class="card">
+              <div class="muted">Latencia</div>
+              <div class="big">220 ms</div>
+            </div>
+            <div class="card">
+              <div class="muted">Eventos recientes</div>
+              <div class="big">14</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REPORTES -->
+      <section class="view hidden" data-view="reportes">
+        <header class="view-header"><h1>Reportes</h1></header>
+
+        <div class="panel">
+          <h3>Exportar datos</h3>
+          <p class="muted">Descarga un CSV con el historial de solicitudes.</p>
+          <div style="display: flex; gap: 8px">
+            <button id="downloadCSV" class="primary">Descargar CSV</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADMIN -->
+      <section class="view hidden" data-view="admin">
+        <header class="view-header"><h1>Administración</h1></header>
+
+        <div class="panel">
+          <h3>Usuarios habilitados</h3>
+          <table class="table" id="tableUsers">
+            <thead>
+              <tr>
+                <th>Usuario</th>
+                <th>Rol</th>
+                <th>Habilitado</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- MODAL: Nueva solicitud -->
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+      <div class="modal-content">
+        <h3>Nueva solicitud</h3>
+        <form id="newRequestForm">
+          <label for="reqTitle">Título</label>
+          <input id="reqTitle" name="title" type="text" required />
+          <label for="reqUser">Solicitante</label>
+          <input id="reqUser" name="user" type="text" required />
+          <label for="reqDesc">Descripción</label>
+          <textarea id="reqDesc" name="desc" rows="4"></textarea>
+          <div
+            style="
+              display: flex;
+              gap: 8px;
+              justify-content: flex-end;
+              margin-top: 12px;
+            "
+          >
+            <button type="button" id="closeModal" class="secondary">
+              Cancelar
+            </button>
+            <button type="submit" class="primary">Crear</button>
+          </div>
+        </form>
+      </div>
     </div>
 
-    <script src="scripts.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
