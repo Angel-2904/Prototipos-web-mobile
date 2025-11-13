@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -10,18 +10,37 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
+
   <body>
+    <!-- THEME TOGGLE (global, visible siempre) -->
+    <button
+      id="themeToggleGlobal"
+      class="theme-toggle global-toggle"
+      aria-label="Cambiar tema"
+      title="Cambiar tema"
+    >
+      🌙
+    </button>
+
+    <!-- HEADER MOBILE -->
+    <div class="mobile-header" role="banner">
+      <button id="menuToggle" class="hamburger" aria-label="Abrir menú">
+        ☰
+      </button>
+      <div class="mobile-title">Red Route - Entelgy</div>
+    </div>
+
     <!-- SIDEBAR -->
     <aside class="sidebar" role="navigation" aria-label="Barra lateral">
       <div class="brand">
-        <div class="logo">GN</div>
+        <div class="logo">RR</div>
         <div>
           <div class="brand-title">Red Route - Entelgy</div>
           <div class="brand-sub">Operaciones y autorizaciones</div>
         </div>
       </div>
 
-      <nav class="menu" role="menu">
+      <nav class="menu" role="menu" aria-label="Menú principal">
         <button class="menu-item active" data-view="dashboard">
           Dashboard
         </button>
@@ -42,7 +61,7 @@
       </div>
     </aside>
 
-    <!-- MAIN CONTENT -->
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="content" role="main">
       <!-- DASHBOARD -->
       <section class="view" data-view="dashboard">
@@ -71,14 +90,13 @@
         <div class="panel">
           <h2>Resumen rápido</h2>
           <p class="muted">
-            Vista general de las solicitudes y autorizaciones. Usa las secciones
-            laterales para administrar y revisar elementos uno por uno.
+            Vista general de las solicitudes y autorizaciones.
           </p>
         </div>
 
-        <!-- Comentarios -->
+        <!-- COMENTARIOS -->
         <div class="panel">
-          <h3>Comentarios sobre Dashboard</h3>
+          <h3>Comentarios — Dashboard</h3>
           <form
             class="comment-form"
             data-screen="Dashboard"
@@ -150,23 +168,14 @@
         >
           <div class="modal-content">
             <h3>Detalle de solicitud</h3>
-            <div id="viewDetails"><!-- datos dinámicos --></div>
-            <div
-              style="
-                display: flex;
-                gap: 8px;
-                justify-content: flex-end;
-                margin-top: 12px;
-              "
-            >
-              <button type="button" id="closeViewModal" class="secondary">
-                Cerrar
-              </button>
+            <div id="viewDetails"></div>
+            <div class="modal-actions">
+              <button id="closeViewModal" class="secondary">Cerrar</button>
             </div>
           </div>
         </div>
 
-        <!-- Comentarios -->
+        <!-- COMENTARIOS -->
         <div class="panel">
           <h3>Comentarios — Solicitudes</h3>
           <form
@@ -174,7 +183,6 @@
             data-screen="Solicitudes"
             id="comment-solicitudes"
           >
-            <input type="hidden" name="screen" value="Solicitudes" />
             <input
               type="text"
               name="name"
@@ -193,13 +201,7 @@
               rows="3"
               required
             ></textarea>
-            <div style="display: flex; gap: 8px; align-items: center">
-              <button class="secondary" type="submit">Enviar comentario</button>
-              <small class="muted"
-                >Los comentarios se guardan localmente o se pueden enviar a
-                Formspree.</small
-              >
-            </div>
+            <button class="secondary" type="submit">Enviar comentario</button>
           </form>
         </div>
       </section>
@@ -222,7 +224,6 @@
           </table>
         </div>
 
-        <!-- Comentarios -->
         <div class="panel">
           <h3>Comentarios — Autorizaciones</h3>
           <form
@@ -230,7 +231,6 @@
             data-screen="Autorizaciones"
             id="comment-autorizaciones"
           >
-            <input type="hidden" name="screen" value="Autorizaciones" />
             <input
               type="text"
               name="name"
@@ -249,13 +249,7 @@
               rows="3"
               required
             ></textarea>
-            <div style="display: flex; gap: 8px; align-items: center">
-              <button class="secondary" type="submit">Enviar comentario</button>
-              <small class="muted"
-                >Los comentarios se guardan localmente o se pueden enviar a
-                Formspree.</small
-              >
-            </div>
+            <button class="secondary" type="submit">Enviar comentario</button>
           </form>
         </div>
       </section>
@@ -263,11 +257,10 @@
       <!-- REPOSITORIO -->
       <section class="view hidden" data-view="repositorio">
         <header class="view-header"><h1>Repositorio</h1></header>
-
         <div class="panel">
           <h3>Subir archivos</h3>
           <input id="fileInput" type="file" multiple />
-          <div style="margin-top: 12px" id="fileList"></div>
+          <div id="fileList" style="margin-top: 12px"></div>
         </div>
 
         <div class="panel">
@@ -277,7 +270,6 @@
             data-screen="Repositorio"
             id="comment-repositorio"
           >
-            <input type="hidden" name="screen" value="Repositorio" />
             <input
               type="text"
               name="name"
@@ -296,13 +288,7 @@
               rows="3"
               required
             ></textarea>
-            <div style="display: flex; gap: 8px; align-items: center">
-              <button class="secondary" type="submit">Enviar comentario</button>
-              <small class="muted"
-                >Los comentarios se guardan localmente o se pueden enviar a
-                Formspree.</small
-              >
-            </div>
+            <button class="secondary" type="submit">Enviar comentario</button>
           </form>
         </div>
       </section>
@@ -310,7 +296,6 @@
       <!-- HISTÓRICO -->
       <section class="view hidden" data-view="historico">
         <header class="view-header"><h1>Histórico</h1></header>
-
         <div class="panel">
           <h3>Registro de solicitudes</h3>
           <table class="table" id="tableHistorico">
@@ -330,10 +315,9 @@
           <h3>Comentarios — Histórico</h3>
           <form
             class="comment-form"
-            data-screen="Histórico"
+            data-screen="Historico"
             id="comment-historico"
           >
-            <input type="hidden" name="screen" value="Histórico" />
             <input
               type="text"
               name="name"
@@ -352,13 +336,7 @@
               rows="3"
               required
             ></textarea>
-            <div style="display: flex; gap: 8px; align-items: center">
-              <button class="secondary" type="submit">Enviar comentario</button>
-              <small class="muted"
-                >Los comentarios se guardan localmente o se pueden enviar a
-                Formspree.</small
-              >
-            </div>
+            <button class="secondary" type="submit">Enviar comentario</button>
           </form>
         </div>
       </section>
@@ -366,7 +344,6 @@
       <!-- MONITOREO -->
       <section class="view hidden" data-view="monitoreo">
         <header class="view-header"><h1>Monitoreo</h1></header>
-
         <div class="panel">
           <h3>Indicadores</h3>
           <div class="grid-3">
@@ -384,25 +361,79 @@
             </div>
           </div>
         </div>
+
+        <div class="panel">
+          <h3>Comentarios — Monitoreo</h3>
+          <form
+            class="comment-form"
+            data-screen="Monitoreo"
+            id="comment-monitoreo"
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Tu nombre (tester)"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="tu@correo.com"
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Tu comentario sobre esta pantalla..."
+              rows="3"
+              required
+            ></textarea>
+            <button class="secondary" type="submit">Enviar comentario</button>
+          </form>
+        </div>
       </section>
 
       <!-- REPORTES -->
       <section class="view hidden" data-view="reportes">
         <header class="view-header"><h1>Reportes</h1></header>
-
         <div class="panel">
           <h3>Exportar datos</h3>
           <p class="muted">Descarga un CSV con el historial de solicitudes.</p>
-          <div style="display: flex; gap: 8px">
-            <button id="downloadCSV" class="primary">Descargar CSV</button>
-          </div>
+          <button id="downloadCSV" class="primary">Descargar CSV</button>
+        </div>
+
+        <div class="panel">
+          <h3>Comentarios — Reportes</h3>
+          <form
+            class="comment-form"
+            data-screen="Reportes"
+            id="comment-reportes"
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Tu nombre (tester)"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="tu@correo.com"
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Tu comentario sobre esta pantalla..."
+              rows="3"
+              required
+            ></textarea>
+            <button class="secondary" type="submit">Enviar comentario</button>
+          </form>
         </div>
       </section>
 
       <!-- ADMIN -->
       <section class="view hidden" data-view="admin">
         <header class="view-header"><h1>Administración</h1></header>
-
         <div class="panel">
           <h3>Usuarios habilitados</h3>
           <table class="table" id="tableUsers">
@@ -415,6 +446,35 @@
             </thead>
             <tbody></tbody>
           </table>
+        </div>
+
+        <div class="panel">
+          <h3>Comentarios — Administración</h3>
+          <form
+            class="comment-form"
+            data-screen="Administracion"
+            id="comment-admin"
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Tu nombre (tester)"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="tu@correo.com"
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Tu comentario sobre esta pantalla..."
+              rows="3"
+              required
+            ></textarea>
+            <button class="secondary" type="submit">Enviar comentario</button>
+          </form>
         </div>
       </section>
     </main>
@@ -430,14 +490,7 @@
           <input id="reqUser" name="user" type="text" required />
           <label for="reqDesc">Descripción</label>
           <textarea id="reqDesc" name="desc" rows="4"></textarea>
-          <div
-            style="
-              display: flex;
-              gap: 8px;
-              justify-content: flex-end;
-              margin-top: 12px;
-            "
-          >
+          <div class="modal-actions">
             <button type="button" id="closeModal" class="secondary">
               Cancelar
             </button>
